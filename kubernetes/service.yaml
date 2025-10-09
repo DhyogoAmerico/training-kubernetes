@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: counter-service
+  labels:
+    app: counter-deployment
+spec:
+  type: NodePort
+  selector:
+    app: counter-deployment
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000

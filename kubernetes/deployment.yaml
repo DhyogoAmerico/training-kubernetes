@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: counter-deployment
+  labels:
+    app: counter-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: counter-deployment
+  template:
+    metadata:
+      labels:
+        app: counter-deployment
+    spec:
+      containers:
+        - name: c-counter-deployment
+          image: dhyogosiqueira/training-kubernates:1.0
+          ports:
+            - containerPort: 3000
