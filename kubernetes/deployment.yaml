@@ -17,9 +17,15 @@ spec:
       containers:
         - name: c-counter-deployment
           image: dhyogosiqueira/training-kubernates:1.0
+          volumeMounts:
+            - mountPath: /app/data
+              name: counter-storage
           ports:
             - containerPort: 3000
           envFrom:
             - configMapRef:
                 name: counter-config
-                
+      volumes:
+        - name: counter-storage
+          persistentVolumeClaim:
+            claimName: counter-pvc
